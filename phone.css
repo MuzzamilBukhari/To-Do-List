@@ -1,0 +1,54 @@
+.container {
+    padding: 15px;
+    border-radius: 8px;
+}
+.head{
+    padding: 5px;
+}
+h1 {
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+.head img {
+    width: 30px;
+}
+input{
+    margin-top: 16px;
+    width: 270px;
+    border-radius: 22px;
+    padding: 10px 0px 10px 8px;
+    font-size: 14px;
+    background-color: rgb(235, 243, 222);
+}
+
+.input button {
+    color: white;
+    background-color: rgb(255, 60, 60);
+    padding: 12px 20px 10px 20px;
+    border-radius: 22px;
+    margin-left: -60px;
+}
+.tasks {
+    padding: 8px;
+    margin-top: 18px;
+    margin-bottom: 14px;
+}
+
+.task {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.task img {
+    width: 18px;
+}
+
+.task p{
+    font-size: 20px;
+    width: 225px;
+    margin-left: 10px;
+}
+.task button {
+    padding: 6px;
+}
