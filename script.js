@@ -6,18 +6,25 @@ let tasks = document.querySelector(".tasks");
 let tasksArr = [];
 
 const checkButton = () => {
-    let checkBtns = document.querySelectorAll(".task img");
-    checkBtns.forEach((checkBtn) => {
+    let tasks = document.querySelectorAll(".task");
+    tasks.forEach((task) => {
+        let checkBtn = task.firstChild;
+        let para = task.children[1];
         checkBtn.onclick = () => {
             let newChkBtn = checkBtn.src.split("/");
             if (newChkBtn[4] == "checked.png"){
+                para.style.color = "black"
+                para.style.textDecoration = "none";
                 checkBtn.src = "images/unchecked.png";
             } else {
+                para.style.color = "grey"
+                para.style.textDecoration = "line-through";
                 checkBtn.src = "images/checked.png";
             }
         }
     })
 }
+
 
 const closeButton = () => {
     let closeBtns = document.querySelectorAll(".task button");
