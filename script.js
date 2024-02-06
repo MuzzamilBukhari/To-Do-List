@@ -9,7 +9,12 @@ const checkButton = () => {
     let checkBtns = document.querySelectorAll(".task img");
     checkBtns.forEach((checkBtn) => {
         checkBtn.onclick = () => {
-            checkBtn.src = "images/checked.png";
+            let newChkBtn = checkBtn.src.split("/");
+            if (newChkBtn[4] == "checked.png"){
+                checkBtn.src = "images/unchecked.png";
+            } else {
+                checkBtn.src = "images/checked.png";
+            }
         }
     })
 }
@@ -22,13 +27,17 @@ const closeButton = () => {
         }
     })
 }
+const displayTasks = () => {
+    tasksArr.forEach((taskName) => {
+        
+    })
+}
 addBtn.onclick = () => {
     if (input.value != ""){
         let task = document.createElement("div");
         task.setAttribute("class", "task");
         task.innerHTML = `<img src="images/unchecked.png"><p>${input.value}</p><button>x</button>`;
         tasks.appendChild(task);
-        tasksArr.push(task);
         input.value = "";
         checkButton ();
         closeButton ();
@@ -37,4 +46,3 @@ addBtn.onclick = () => {
 
 
 
-console.log(tasksArr)
