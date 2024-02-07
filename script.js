@@ -1,55 +1,38 @@
 let input = document.querySelector("input");
-let addBtn = document.querySelector(".input button");
-let tasks = document.querySelector(".tasks");
+let listContainer = document.querySelector("#list-container");
 
+const addTask = () => {
+    if (input.value === ""){
+        alert("Please enter a task");
+    } else {
+        let li = document.createElement("li");
+        li.innerHTML = input.value;
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+        listContainer.append(li);
 
-let tasksArr = [];
-
-const checkButton = () => {
-    let tasks = document.querySelectorAll(".task");
-    tasks.forEach((task) => {
-        let checkBtn = task.firstChild;
-        let para = task.children[1];
-        checkBtn.onclick = () => {
-            let newChkBtn = checkBtn.src.split("/");
-            if (newChkBtn[4] == "checked.png"){
-                para.style.color = "black"
-                para.style.textDecoration = "none";
-                checkBtn.src = "images/unchecked.png";
-            } else {
-                para.style.color = "grey"
-                para.style.textDecoration = "line-through";
-                checkBtn.src = "images/checked.png";
-            }
-        }
-    })
-}
-
-
-const closeButton = () => {
-    let closeBtns = document.querySelectorAll(".task button");
-    closeBtns.forEach((closeBtn) => {
-        closeBtn.onclick = () => {
-            tasks.removeChild(closeBtn.parentElement);
-        }
-    })
-}
-const displayTasks = () => {
-    tasksArr.forEach((taskName) => {
-        
-    })
-}
-addBtn.onclick = () => {
-    if (input.value != ""){
-        let task = document.createElement("div");
-        task.setAttribute("class", "task");
-        task.innerHTML = `<img src="images/unchecked.png"><p>${input.value}</p><button>x</button>`;
-        tasks.appendChild(task);
-        input.value = "";
-        checkButton ();
-        closeButton ();
     }
+    input.value = "";
+    saveData();
 }
 
+listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+        saveData();
+    } else if (e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData();
+    }
+})
 
+const saveData = () => {
+    localStorage.setItem("data", listContainer.innerHTML);
+}
+
+const displayData = () => {
+    listContainer.innerHTML = localStorage.getItem("data");
+}
+displayData();
 
